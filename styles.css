@@ -29,6 +29,10 @@ nav a:hover::after, nav a:focus-visible::after, .text-link:hover::after { right:
 .button { display: inline-flex; align-items: center; justify-content: center; gap: 16px; border: 0; border-radius: 999px; background: var(--coral); color: #fff; padding: 15px 23px; font-weight: 700; cursor: pointer; transition: transform .2s ease, box-shadow .2s ease; }
 .button:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(154, 62, 43, .22); }
 .button-small { padding: 11px 18px; font-size: .88rem; }
+.cart-link { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 8px 10px 8px 14px; border: 1px solid var(--line); border-radius: 999px; font-size: .86rem; font-weight: 700; transition: color .18s ease, border-color .18s ease, transform .18s ease; }
+.cart-link:hover { color: var(--coral); border-color: var(--coral); transform: translateY(-1px); }
+.cart-icon { font-size: 1.05rem; }
+.cart-count { display: grid; place-items: center; min-width: 24px; height: 24px; padding: 0 6px; border-radius: 999px; color: #fff; background: var(--coral); font-size: .68rem; }
 
 .hero { min-height: 650px; display: grid; grid-template-columns: 1.05fr .95fr; background: var(--cream); overflow: hidden; }
 .hero-copy { align-self: center; padding: 78px clamp(30px, 7vw, 115px); }
@@ -94,6 +98,13 @@ h2 { margin: 0; font-size: clamp(2.4rem, 4vw, 4rem); line-height: 1.05; letter-s
 .card-content > p { min-height: 44px; margin: 11px 0 17px; color: var(--muted); font-size: .88rem; line-height: 1.55; }
 .tags { display: flex; flex-wrap: wrap; gap: 6px; }
 .tags span { padding: 5px 9px; border-radius: 4px; background: #eef1e8; font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; }
+.card-meta { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.add-to-cart { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 7px; padding: 7px 10px 7px 12px; border: 1px solid var(--ink); border-radius: 999px; color: var(--ink); background: transparent; cursor: pointer; font-size: .72rem; font-weight: 700; transition: color .18s ease, background .18s ease, transform .18s ease; }
+.add-to-cart span { font-size: 1rem; line-height: .7; }
+.add-to-cart:hover, .add-to-cart.is-added { color: #fff; background: var(--ink); transform: translateY(-1px); }
+.cart-toast { position: fixed; z-index: 20; right: 24px; bottom: 24px; margin: 0; padding: 14px 18px; border-radius: 10px; color: #fff; background: var(--ink); box-shadow: 0 14px 35px rgba(0,0,0,.22); font-size: .83rem; font-weight: 700; animation: toast-in .25s ease both; }
+.cart-toast[hidden] { display: none; }
+@keyframes toast-in { from { opacity: 0; transform: translateY(10px); } }
 
 .assistant-section { margin: 0 clamp(24px, 6vw, 96px) 110px; padding: clamp(35px, 5vw, 65px); display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 34px; color: #fff; background: var(--ink); border-radius: 24px; }
 .assistant-icon { width: 74px; height: 74px; display: grid; place-items: center; border-radius: 50%; color: var(--ink); background: var(--sage); font-size: 2rem; }
@@ -137,6 +148,7 @@ footer p { color: #9eb0aa; font-size: .88rem; line-height: 1.7; }
 @media (max-width: 620px) {
   .site-header { height: 72px; padding: 0 18px; }
   .site-header .button { display: none; }
+  .cart-link > span:nth-child(2) { display: none; }
   .hero-copy { padding: 58px 22px 64px; }
   h1 { font-size: clamp(3.1rem, 16vw, 4.5rem); }
   .hero-actions { align-items: flex-start; flex-direction: column; gap: 22px; }
