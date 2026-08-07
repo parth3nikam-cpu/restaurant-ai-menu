@@ -28,7 +28,11 @@
         <a href="#about">Our story</a>
         <a href="#visit">Visit</a>
       </nav>
-      <a class="button button-small" href="survey.html">Take the taste quiz</a>
+      <a class="cart-link" href="cart.html" aria-label="Open shopping cart">
+        <span class="cart-icon" aria-hidden="true">🛒</span>
+        <span>Cart</span>
+        <span class="cart-count" id="cart-count">0</span>
+      </a>
     </header>
 
     <main id="top">
@@ -107,7 +111,7 @@
             <div class="card-content">
               <div class="card-title-row"><h3>Heirloom tomatoes</h3><strong>$14</strong></div>
               <p>Whipped feta, basil oil, toasted seeds, sourdough</p>
-              <div class="tags"><span>Vegetarian</span><span>Popular</span></div>
+              <div class="card-meta"><div class="tags"><span>Vegetarian</span><span>Popular</span></div><button class="add-to-cart" type="button" data-item="tomatoes">Add <span aria-hidden="true">+</span></button></div>
             </div>
           </article>
 
@@ -116,7 +120,7 @@
             <div class="card-content">
               <div class="card-title-row"><h3>Cedar-roasted salmon</h3><strong>$28</strong></div>
               <p>Spring peas, charred lemon, fingerling potatoes, dill</p>
-              <div class="tags"><span>Gluten-free</span></div>
+              <div class="card-meta"><div class="tags"><span>Gluten-free</span></div><button class="add-to-cart" type="button" data-item="salmon">Add <span aria-hidden="true">+</span></button></div>
             </div>
           </article>
 
@@ -125,7 +129,7 @@
             <div class="card-content">
               <div class="card-title-row"><h3>Wild mushroom pasta</h3><strong>$23</strong></div>
               <p>Hand-cut pappardelle, brown butter, sage, parmesan</p>
-              <div class="tags"><span>Vegetarian</span></div>
+              <div class="card-meta"><div class="tags"><span>Vegetarian</span></div><button class="add-to-cart" type="button" data-item="pasta">Add <span aria-hidden="true">+</span></button></div>
             </div>
           </article>
 
@@ -134,7 +138,7 @@
             <div class="card-content">
               <div class="card-title-row"><h3>Lemon olive oil cake</h3><strong>$11</strong></div>
               <p>Crème fraîche, macerated berries, garden mint</p>
-              <div class="tags"><span>House favorite</span></div>
+              <div class="card-meta"><div class="tags"><span>House favorite</span></div><button class="add-to-cart" type="button" data-item="cake">Add <span aria-hidden="true">+</span></button></div>
             </div>
           </article>
         </div>
@@ -152,6 +156,8 @@
       <div><strong>Say hello</strong><p>(555) 014-8820<br />hello@savorly.example</p></div>
       <p class="copyright">© <span id="year"></span> Savorly</p>
     </footer>
+
+    <p class="cart-toast" id="cart-toast" role="status" aria-live="polite" hidden></p>
 
     <script src="script.js"></script>
   </body>
