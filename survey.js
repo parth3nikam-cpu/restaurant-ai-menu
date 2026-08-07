@@ -41,6 +41,9 @@ const spiceNames = ["No heat", "Mild", "Medium", "Hot", "Extra hot"];
 let currentStep = 0;
 let rankedMatches = [];
 let resultIndex = 0;
+let currentResult = null;
+const cartStorageKey = "savorly-cart";
+const recommendationStorageKey = "savorly-recommendation-items";
 
 function showStep(index) {
   currentStep = index;
@@ -113,6 +116,8 @@ function rankDishes(answers) {
 }
 
 function displayResult(match, answers, index) {
+  currentResult = match;
+  const price = priceForDish(match);
   const preferredFlavors = match.flavors.filter((flavor) => answers.flavors.includes(flavor));
   const flavorText = preferredFlavors.length
     ? `It shares your love of ${preferredFlavors.join(" and ")} flavors`
@@ -124,6 +129,8 @@ function displayResult(match, answers, index) {
 
   document.querySelector("#result-name").textContent = match.name;
   document.querySelector("#result-cuisine").textContent = `${match.cuisine} | ${capitalize(match.diet)}`;
+  document.querySelector("#result-price").textContent = `$${price.toFixed(2)}`;
+  document.querySelector("#result-cart-button").textContent = `Add to cart · $${price.toFixed(2)}`;
   document.querySelector("#match-score").textContent = `${score}%`;
   document.querySelector("#result-description").textContent = match.description;
   document.querySelector("#result-reason").textContent = `${cuisineText}. ${flavorText}, and the ${match.format} style fits your ${answers.mood} mood.`;
@@ -134,6 +141,16 @@ function displayResult(match, answers, index) {
 
 function capitalize(value) {
   return value.charAt(0).toUpperCase() + value.slice(1);
+}
+
+function priceForDish(dish) {
+  const basePrices = { meat: 25, seafood: 29, vegetarian: 21, vegan: 19 };
+  const cuisineAdjustments = { Japanese: 2, Mediterranean: 1, Italian: 1, Thai: 1, Indian: 0, Mexican: -1, American: 0 };
+  return basePrices[dish.diet] + (cuisineAdjustments[dish.cuisine] || 0);
+}
+
+function readStoredObject(key) {
+  try { return JSON.parse(localStorage.getItem(key)) || {}; } catch { return {}; }
 }
 
 nextButton.addEventListener("click", () => {
@@ -174,6 +191,28 @@ form.addEventListener("submit", (event) => {
 document.querySelector("#another-button").addEventListener("click", () => {
   resultIndex = (resultIndex + 1) % Math.min(4, rankedMatches.length);
   displayResult(rankedMatches[resultIndex], getAnswers(), resultIndex);
+});
+
+document.querySelector("#result-cart-button").addEventListener("click", () => {
+  if (!currentResult) return;
+  const itemId = `recommendation-${currentResult.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")}`;
+  const recommendationItems = readStoredObject(recommendationStorageKey);
+  const cart = readStoredObject(cartStorageKey);
+
+  recommendationItems[itemId] = {
+    name: currentResult.name,
+    price: priceForDish(currentResult),
+    description: currentResult.description,
+    art: "art-recommendation"
+  };
+  cart[itemId] = Math.min(10, (Number(cart[itemId]) || 0) + 1);
+
+  try {
+    localStorage.setItem(recommendationStorageKey, JSON.stringify(recommendationItems));
+    localStorage.setItem(cartStorageKey, JSON.stringify(cart));
+  } catch { /* Navigation still works when browser storage is unavailable. */ }
+
+  window.location.href = "cart.html";
 });
 
 document.querySelector("#restart-button").addEventListener("click", () => {
