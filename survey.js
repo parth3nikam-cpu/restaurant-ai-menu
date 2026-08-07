@@ -1,7 +1,3 @@
-const pageParameters = new URLSearchParams(window.location.search);
-const isEmbeddedSurvey = pageParameters.get("embedded") === "1";
-document.documentElement.classList.toggle("embedded-survey", isEmbeddedSurvey);
-
 const dishes = [
   { name: "Butter Chicken", cuisine: "Indian", diet: "meat", flavors: ["creamy", "savory"], spice: 2, format: "saucy", mood: "cozy", description: "Tender chicken in a velvety tomato, butter, and warming spice sauce, served with fragrant basmati rice." },
   { name: "Goan Fish Curry", cuisine: "Indian", diet: "seafood", flavors: ["spicy", "fresh"], spice: 3, format: "saucy", mood: "adventurous", description: "Flaky fish simmered with coconut, tamarind, chile, and bright coastal spices." },
@@ -46,16 +42,6 @@ let currentStep = 0;
 let rankedMatches = [];
 let resultIndex = 0;
 
-function reportEmbeddedHeight() {
-  if (!isEmbeddedSurvey || window.parent === window) return;
-  requestAnimationFrame(() => {
-    window.parent.postMessage(
-      { type: "savorly-survey-height", height: document.documentElement.scrollHeight },
-      "*"
-    );
-  });
-}
-
 function showStep(index) {
   currentStep = index;
   steps.forEach((step, stepIndex) => {
@@ -72,7 +58,6 @@ function showStep(index) {
   nextButton.hidden = index === steps.length - 1;
   submitButton.hidden = index !== steps.length - 1;
   steps[index].querySelector("legend").focus?.();
-  reportEmbeddedHeight();
 }
 
 function validateCurrentStep() {
@@ -184,7 +169,6 @@ form.addEventListener("submit", (event) => {
   resultView.hidden = false;
   displayResult(rankedMatches[resultIndex], answers, resultIndex);
   resultView.focus();
-  reportEmbeddedHeight();
 });
 
 document.querySelector("#another-button").addEventListener("click", () => {
@@ -205,15 +189,4 @@ document.querySelector("#restart-button").addEventListener("click", () => {
 });
 
 document.querySelector("#year").textContent = new Date().getFullYear();
-
-const starterFlavor = pageParameters.get("flavor");
-const starterMood = pageParameters.get("mood");
-const flavorInput = [...document.querySelectorAll('input[name="flavor"]')]
-  .find((input) => input.value === starterFlavor);
-const moodInput = [...document.querySelectorAll('input[name="mood"]')]
-  .find((input) => input.value === starterMood);
-if (flavorInput) flavorInput.checked = true;
-if (moodInput) moodInput.checked = true;
-
 showStep(0);
-window.addEventListener("load", reportEmbeddedHeight);
