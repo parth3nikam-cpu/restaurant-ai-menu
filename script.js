@@ -16,16 +16,4 @@ menuCards.forEach((card) => {
   });
 });
 
-const surveyFrame = document.querySelector("#survey-frame");
-
-window.addEventListener("message", (event) => {
-  if (
-    event.source === surveyFrame.contentWindow &&
-    event.data?.type === "savorly-survey-height"
-  ) {
-    const safeHeight = Math.max(680, Math.min(1200, Number(event.data.height)));
-    if (Number.isFinite(safeHeight)) surveyFrame.style.height = `${safeHeight}px`;
-  }
-});
-
 document.querySelector("#year").textContent = new Date().getFullYear();
