@@ -49,6 +49,26 @@
               </label>
             </div>
             <p class="fulfillment-error" id="fulfillment-error" role="alert"></p>
+            <div class="takeout-contact" id="takeout-contact" hidden>
+              <div class="takeout-contact-heading">
+                <div><span aria-hidden="true">🥡</span><div><strong>Who is picking up?</strong><small>We will save these takeout details to the restaurant’s Google Form.</small></div></div>
+                <span>Takeout only</span>
+              </div>
+              <form
+                id="google-order-form"
+                action="https://docs.google.com/forms/d/e/1FAIpQLSc1fLnXTK5sUyziZZkfqFkSjfvlSCppvvPLOp5w_xZoVN78RQ/formResponse"
+                method="post"
+                target="google-form-target"
+              >
+                <div class="contact-field-grid">
+                  <label><span>Name</span><input type="text" name="entry.1648319800" id="customer-name" autocomplete="name" required placeholder="Your name" /></label>
+                  <label><span>Phone number</span><input type="tel" name="entry.1363367650" autocomplete="tel" required placeholder="(555) 000-0000" /></label>
+                  <label><span>Second phone number <small>Optional</small></span><input type="tel" name="entry.1670955524" autocomplete="tel" placeholder="Backup number" /></label>
+                  <label><span>Email</span><input type="email" name="entry.156291691" autocomplete="email" required placeholder="you@example.com" /></label>
+                </div>
+              </form>
+              <iframe class="google-form-target" name="google-form-target" title="Google Form submission response" hidden></iframe>
+            </div>
           </fieldset>
 
           <section class="cart-items-section" aria-labelledby="cart-items-title">
