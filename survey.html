@@ -120,7 +120,7 @@
           <div class="result-celebration" aria-hidden="true">&#10024;</div>
           <p class="eyebrow">Your Savorly match</p>
           <h2 id="result-name"></h2>
-          <p class="result-cuisine" id="result-cuisine"></p>
+          <div class="result-meta"><p class="result-cuisine" id="result-cuisine"></p><strong id="result-price"></strong></div>
           <div class="match-score"><span id="match-score">94%</span><small>taste match</small></div>
           <p class="result-description" id="result-description"></p>
           <div class="result-reasons">
@@ -130,7 +130,8 @@
           </div>
           <p class="allergy-note">Please tell your server about any allergies. Recommendations are for inspiration and are not medical advice.</p>
           <div class="result-actions">
-            <button class="button" id="another-button" type="button">Show another match</button>
+            <button class="button result-cart-button" id="result-cart-button" type="button">Add to cart</button>
+            <button class="button result-secondary-button" id="another-button" type="button">Show another match</button>
             <button class="back-button" id="restart-button" type="button">Retake the quiz</button>
           </div>
         </section>
