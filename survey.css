@@ -1,4 +1,5 @@
 .survey-page { min-height: 100vh; background: var(--cream); }
+.survey-page [hidden] { display: none !important; }
 .survey-header { position: relative; z-index: 3; }
 .back-link { display: inline-flex; align-items: center; gap: 9px; font-size: .88rem; font-weight: 700; }
 .back-link:hover { color: var(--coral); }
