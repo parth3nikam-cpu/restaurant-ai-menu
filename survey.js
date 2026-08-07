@@ -189,4 +189,15 @@ document.querySelector("#restart-button").addEventListener("click", () => {
 });
 
 document.querySelector("#year").textContent = new Date().getFullYear();
+
+const starterPreference = new URLSearchParams(window.location.search);
+const starterFlavor = starterPreference.get("flavor");
+const starterMood = starterPreference.get("mood");
+const flavorInput = [...document.querySelectorAll('input[name="flavor"]')]
+  .find((input) => input.value === starterFlavor);
+const moodInput = [...document.querySelectorAll('input[name="mood"]')]
+  .find((input) => input.value === starterMood);
+if (flavorInput) flavorInput.checked = true;
+if (moodInput) moodInput.checked = true;
+
 showStep(0);
