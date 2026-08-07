@@ -28,7 +28,7 @@
         <a href="#about">Our story</a>
         <a href="#visit">Visit</a>
       </nav>
-      <a class="button button-small" href="#visit">Book a table</a>
+      <a class="button button-small" href="survey.html">Take the taste quiz</a>
     </header>
 
     <main id="top">
@@ -42,7 +42,7 @@
           </p>
           <div class="hero-actions">
             <a class="button" href="#menu">Explore the menu <span aria-hidden="true">→</span></a>
-            <a class="text-link" href="#assistant">Ask our AI assistant</a>
+            <a class="text-link" href="survey.html">Take the 1-minute taste quiz</a>
           </div>
         </div>
         <div class="hero-art" aria-hidden="true">
@@ -116,11 +116,20 @@
       <section class="assistant-section" id="assistant" aria-labelledby="assistant-title">
         <div class="assistant-icon" aria-hidden="true">✦</div>
         <div class="assistant-copy">
-          <p class="eyebrow">Your personal taste guide</p>
-          <h2 id="assistant-title">Not sure what to order?</h2>
-          <p>Tell our Menu Assistant what you love, how you eat, and what you are craving. It will find a dish matched to your taste in seconds.</p>
+          <p class="eyebrow">Your perfect plate is 60 seconds away</p>
+          <h2 id="assistant-title">Cravings, meet your match.</h2>
+          <p>Answer five quick questions and discover the dish your taste buds have been waiting for. No guessing, just a seriously good recommendation.</p>
+          <div class="quiz-quick-pick">
+            <span class="quiz-label">Start with a craving</span>
+            <div class="quick-picks" role="group" aria-label="Choose a craving to start your survey">
+              <button class="quick-pick" type="button" data-param="flavor" data-value="spicy" data-label="spicy">Spicy</button>
+              <button class="quick-pick" type="button" data-param="mood" data-value="cozy" data-label="comforting">Cozy</button>
+              <button class="quick-pick" type="button" data-param="flavor" data-value="fresh" data-label="fresh">Fresh</button>
+            </div>
+            <p class="quick-pick-note" id="quick-pick-note" aria-live="polite">Or jump straight in and let us surprise you.</p>
+          </div>
         </div>
-        <a class="button button-light" href="survey.html">Find my dish <span aria-hidden="true">→</span></a>
+        <a class="button button-light quiz-cta" id="quiz-cta" href="survey.html">Reveal my perfect dish <span aria-hidden="true">→</span></a>
       </section>
 
       <section class="story-section" id="about">
