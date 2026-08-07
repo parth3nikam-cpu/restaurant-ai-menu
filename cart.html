@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Review your Savorly order, choose dine in or takeout, and see your total." />
+    <title>Your Cart | Savorly</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="cart.css" />
+  </head>
+  <body class="cart-page">
+    <header class="site-header cart-header">
+      <a class="brand" href="index.html" aria-label="Savorly home"><span class="brand-mark">S</span><span>Savorly</span></a>
+      <nav aria-label="Primary navigation">
+        <a href="index.html#menu">Menu</a>
+        <a href="survey.html">Taste quiz</a>
+        <a href="index.html#visit">Visit</a>
+      </nav>
+      <div class="cart-link current-cart" aria-label="Current shopping cart"><span class="cart-icon" aria-hidden="true">🛒</span><span>Cart</span><span class="cart-count" id="cart-count">0</span></div>
+    </header>
+
+    <main>
+      <section class="cart-hero">
+        <p class="eyebrow">Almost time to eat</p>
+        <h1>Your cart.</h1>
+        <p>Review your dishes, choose how you would like to enjoy them, and we will handle the rest.</p>
+      </section>
+
+      <div class="cart-layout">
+        <div class="cart-main">
+          <fieldset class="fulfillment-card" aria-describedby="fulfillment-help fulfillment-error">
+            <legend>How would you like your order?</legend>
+            <p id="fulfillment-help">Choose one option. Selecting either option automatically clears the other.</p>
+            <div class="fulfillment-options">
+              <label class="fulfillment-option">
+                <input type="checkbox" id="takeout-option" name="fulfillment" value="takeout" />
+                <span class="custom-checkbox" aria-hidden="true">✓</span>
+                <span class="fulfillment-icon" aria-hidden="true">🥡</span>
+                <span><strong>Takeout</strong><small>Ready in about 25–35 minutes</small></span>
+              </label>
+              <label class="fulfillment-option">
+                <input type="checkbox" id="dinein-option" name="fulfillment" value="dine-in" />
+                <span class="custom-checkbox" aria-hidden="true">✓</span>
+                <span class="fulfillment-icon" aria-hidden="true">🍽️</span>
+                <span><strong>Dine in</strong><small>Enjoy your order at Savorly</small></span>
+              </label>
+            </div>
+            <p class="fulfillment-error" id="fulfillment-error" role="alert"></p>
+          </fieldset>
+
+          <section class="cart-items-section" aria-labelledby="cart-items-title">
+            <div class="cart-section-heading"><h2 id="cart-items-title">Your dishes</h2><a href="index.html#menu">Continue ordering</a></div>
+            <div class="cart-items" id="cart-items"></div>
+            <div class="empty-cart" id="empty-cart" hidden>
+              <span aria-hidden="true">🍽️</span>
+              <h3>Your cart is waiting.</h3>
+              <p>Add something delicious from our menu to get started.</p>
+              <a class="button" href="index.html#menu">Browse the menu</a>
+            </div>
+          </section>
+
+          <section class="cart-suggestions" aria-labelledby="suggestions-title">
+            <div class="cart-section-heading"><h2 id="suggestions-title">A little something extra?</h2></div>
+            <div class="suggestion-grid">
+              <article><div class="suggestion-art suggestion-tomato" aria-hidden="true">01</div><div><h3>Heirloom tomatoes</h3><p>Whipped feta, basil oil</p><strong>$14.00</strong></div><button type="button" data-add-item="tomatoes" aria-label="Add heirloom tomatoes">+</button></article>
+              <article><div class="suggestion-art suggestion-cake" aria-hidden="true">02</div><div><h3>Lemon olive oil cake</h3><p>Crème fraîche, berries</p><strong>$11.00</strong></div><button type="button" data-add-item="cake" aria-label="Add lemon olive oil cake">+</button></article>
+            </div>
+          </section>
+        </div>
+
+        <aside class="order-summary" aria-labelledby="summary-title">
+          <p class="summary-kicker">Order summary</p>
+          <h2 id="summary-title">Today’s total</h2>
+          <div class="summary-lines">
+            <div><span>Subtotal</span><strong id="subtotal">$0.00</strong></div>
+            <div class="discount-line" id="discount-line" hidden><span>Promo discount</span><strong id="discount">−$0.00</strong></div>
+            <div><span>Estimated tax</span><strong id="tax">$0.00</strong></div>
+            <div id="packaging-line" hidden><span>Takeout packaging</span><strong>$2.00</strong></div>
+          </div>
+          <div class="summary-total"><span>Total</span><strong id="total">$0.00</strong></div>
+
+          <form class="promo-form" id="promo-form">
+            <label for="promo-code">Promo code</label>
+            <div><input id="promo-code" type="text" placeholder="Enter code" autocomplete="off" /><button type="submit">Apply</button></div>
+            <p id="promo-message" aria-live="polite">Try WELCOME10 for 10% off.</p>
+          </form>
+
+          <button class="button checkout-button" id="checkout-button" type="button">Continue to checkout <span aria-hidden="true">→</span></button>
+          <p class="checkout-note">No payment will be taken on this demo page.</p>
+          <p class="checkout-status" id="checkout-status" role="status" tabindex="-1" hidden></p>
+        </aside>
+      </div>
+    </main>
+
+    <footer class="cart-footer"><p>© <span id="year"></span> Savorly</p><a href="index.html">Back to Savorly</a></footer>
+    <script src="cart.js"></script>
+  </body>
+</html>
