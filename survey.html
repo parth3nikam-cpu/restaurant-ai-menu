@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Take the Savorly taste survey and discover a dish matched to your cravings." />
+    <title>Taste Quiz | Savorly</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="survey.css" />
+  </head>
+  <body class="survey-page">
+    <header class="site-header survey-header">
+      <a class="brand" href="index.html" aria-label="Savorly home">
+        <span class="brand-mark">S</span>
+        <span>Savorly</span>
+      </a>
+      <a class="back-link" href="index.html"><span aria-hidden="true">&larr;</span> Back to restaurant</a>
+    </header>
+
+    <main>
+      <section class="survey-intro">
+        <p class="eyebrow">Savorly taste finder</p>
+        <h1>Meet your next<br /><em>favorite dish.</em></h1>
+        <p>Answer five quick questions and we will match your cuisine, diet, flavors, and mood to something delicious.</p>
+        <div class="time-note"><span aria-hidden="true">&#9719;</span> Takes about 1 minute</div>
+      </section>
+
+      <section class="survey-shell" aria-labelledby="survey-title">
+        <div class="survey-topline">
+          <div>
+            <span class="step-kicker">Taste quiz</span>
+            <strong id="step-count">Step 1 of 5</strong>
+          </div>
+          <span id="progress-percent">20% complete</span>
+        </div>
+        <div class="progress-track" aria-hidden="true"><span id="progress-bar"></span></div>
+
+        <form id="taste-survey" novalidate>
+          <fieldset class="survey-step active" data-step="1">
+            <legend id="survey-title">Which cuisine sounds best?</legend>
+            <p class="question-help">Pick one. Choose “Surprise me” if you want us to lead the way.</p>
+            <div class="choice-grid cuisine-grid">
+              <label class="choice-card"><input type="radio" name="cuisine" value="Indian" required /><span class="choice-emoji" aria-hidden="true">&#127835;</span><span><strong>Indian</strong><small>Warm spices &amp; rich curries</small></span><span class="choice-check">&#10003;</span></label>
+              <label class="choice-card"><input type="radio" name="cuisine" value="Italian" /><span class="choice-emoji" aria-hidden="true">&#127837;</span><span><strong>Italian</strong><small>Pasta, herbs &amp; comfort</small></span><span class="choice-check">&#10003;</span></label>
+              <label class="choice-card"><input type="radio" name="cuisine" value="Mexican" /><span class="choice-emoji" aria-hidden="true">&#127790;</span><span><strong>Mexican</strong><small>Bright, smoky &amp; bold</small></span><span class="choice-check">&#10003;</span></label>
+              <label class="choice-card"><input type="radio" name="cuisine" value="American" /><span class="choice-emoji" aria-hidden="true">&#127828;</span><span><strong>American</strong><small>Familiar favorites</small></span><span class="choice-check">&#10003;</span></label>
+              <label class="choice-card"><input type="radio" name="cuisine" value="Japanese" /><span class="choice-emoji" aria-hidden="true">&#127843;</span><span><strong>Japanese</strong><small>Clean, savory &amp; balanced</small></span><span class="choice-check">&#10003;</span></label>
+              <label class="choice-card"><input type="radio" name="cuisine" value="Mediterranean" /><span class="choice-emoji" aria-hidden="true">&#129368;</span><span><strong>Mediterranean</strong><small>Fresh herbs &amp; olive oil</small></span><span class="choice-check">&#10003;</span></label>
+              <label class="choice-card"><input type="radio" name="cuisine" value="Thai" /><span class="choice-emoji" aria-hidden="true">&#127836;</span><span><strong>Thai</strong><small>Sweet, sour &amp; spicy</small></span><span class="choice-check">&#10003;</span></label>
+              <label class="choice-card"><input type="radio" name="cuisine" value="Surprise" /><span class="choice-emoji" aria-hidden="true">&#10024;</span><span><strong>Surprise me</strong><small>Open to any cuisine</small></span><span class="choice-check">&#10003;</span></label>
+            </div>
+            <p class="step-error" role="alert"></p>
+          </fieldset>
+
+          <fieldset class="survey-step" data-step="2" hidden>
+            <legend>How do you like to eat?</legend>
+            <p class="question-help">We will only suggest dishes that match your choice.</p>
+            <div class="choice-grid diet-grid">
+              <label class="choice-card choice-card-large"><input type="radio" name="diet" value="meat" required /><span class="choice-emoji" aria-hidden="true">&#127830;</span><span><strong>Meat</strong><small>Chicken, beef, or lamb</small></span><span class="choice-check">&#10003;</span></label>
+              <label class="choice-card choice-card-large"><input type="radio" name="diet" value="seafood" /><span class="choice-emoji" aria-hidden="true">&#128031;</span><span><strong>Seafood</strong><small>Fish or shellfish</small></span><span class="choice-check">&#10003;</span></label>
+              <label class="choice-card choice-card-large"><input type="radio" name="diet" value="vegetarian" /><span class="choice-emoji" aria-hidden="true">&#129472;</span><span><strong>Vegetarian</strong><small>No meat or seafood</small></span><span class="choice-check">&#10003;</span></label>
+              <label class="choice-card choice-card-large"><input type="radio" name="diet" value="vegan" /><span class="choice-emoji" aria-hidden="true">&#127793;</span><span><strong>Vegan</strong><small>Fully plant-based</small></span><span class="choice-check">&#10003;</span></label>
+            </div>
+            <p class="step-error" role="alert"></p>
+          </fieldset>
+
+          <fieldset class="survey-step" data-step="3" hidden>
+            <legend>What flavors are calling you?</legend>
+            <p class="question-help">Choose up to three flavor directions.</p>
+            <div class="pill-grid" id="flavor-options">
+              <label class="pill-choice"><input type="checkbox" name="flavor" value="spicy" /><span>&#127798;&#65039; Spicy &amp; bold</span></label>
+              <label class="pill-choice"><input type="checkbox" name="flavor" value="savory" /><span>&#129382; Deeply savory</span></label>
+              <label class="pill-choice"><input type="checkbox" name="flavor" value="fresh" /><span>&#127807; Fresh &amp; herby</span></label>
+              <label class="pill-choice"><input type="checkbox" name="flavor" value="creamy" /><span>&#129371; Creamy &amp; rich</span></label>
+              <label class="pill-choice"><input type="checkbox" name="flavor" value="smoky" /><span>&#128293; Smoky &amp; charred</span></label>
+              <label class="pill-choice"><input type="checkbox" name="flavor" value="sweet-savory" /><span>&#127855; Sweet &amp; savory</span></label>
+            </div>
+            <div class="range-block">
+              <div class="range-label"><label for="spice-level">Your ideal heat level</label><output id="spice-output" for="spice-level">Medium</output></div>
+              <input id="spice-level" name="spice" type="range" min="0" max="4" value="2" />
+              <div class="range-ends"><span>No heat</span><span>Bring the fire</span></div>
+            </div>
+            <p class="step-error" role="alert"></p>
+          </fieldset>
+
+          <fieldset class="survey-step" data-step="4" hidden>
+            <legend>What kind of dish feels right?</legend>
+            <p class="question-help">Choose the texture or format you would enjoy most.</p>
+            <div class="choice-grid format-grid">
+              <label class="choice-card"><input type="radio" name="format" value="saucy" required /><span class="choice-emoji" aria-hidden="true">&#129379;</span><span><strong>Saucy</strong><small>Curry, pasta, or braise</small></span><span class="choice-check">&#10003;</span></label>
+              <label class="choice-card"><input type="radio" name="format" value="grilled" /><span class="choice-emoji" aria-hidden="true">&#128293;</span><span><strong>Grilled</strong><small>Charred and satisfying</small></span><span class="choice-check">&#10003;</span></label>
+              <label class="choice-card"><input type="radio" name="format" value="crispy" /><span class="choice-emoji" aria-hidden="true">&#10024;</span><span><strong>Crispy</strong><small>Crunch in every bite</small></span><span class="choice-check">&#10003;</span></label>
+              <label class="choice-card"><input type="radio" name="format" value="bowl" /><span class="choice-emoji" aria-hidden="true">&#127858;</span><span><strong>Bowl</strong><small>Layered and balanced</small></span><span class="choice-check">&#10003;</span></label>
+            </div>
+            <p class="step-error" role="alert"></p>
+          </fieldset>
+
+          <fieldset class="survey-step" data-step="5" hidden>
+            <legend>What is the mood today?</legend>
+            <p class="question-help">One last detail to make the match feel just right.</p>
+            <div class="mood-list">
+              <label class="mood-choice"><input type="radio" name="mood" value="cozy" required /><span class="mood-number">01</span><span><strong>Cozy comfort</strong><small>Warm, familiar, and deeply satisfying</small></span><span class="choice-check">&#10003;</span></label>
+              <label class="mood-choice"><input type="radio" name="mood" value="adventurous" /><span class="mood-number">02</span><span><strong>Something adventurous</strong><small>A new flavor combination or regional specialty</small></span><span class="choice-check">&#10003;</span></label>
+              <label class="mood-choice"><input type="radio" name="mood" value="balanced" /><span class="mood-number">03</span><span><strong>Fresh and balanced</strong><small>Colorful, lively, and not too heavy</small></span><span class="choice-check">&#10003;</span></label>
+            </div>
+            <p class="step-error" role="alert"></p>
+          </fieldset>
+
+          <div class="survey-actions">
+            <button class="back-button" id="previous-button" type="button" hidden><span aria-hidden="true">&larr;</span> Previous</button>
+            <button class="button next-button" id="next-button" type="button">Next question <span aria-hidden="true">&rarr;</span></button>
+            <button class="button next-button" id="submit-button" type="submit" hidden>Find my food <span aria-hidden="true">&#10024;</span></button>
+          </div>
+        </form>
+
+        <section class="result-view" id="result-view" hidden aria-live="polite" tabindex="-1">
+          <div class="result-celebration" aria-hidden="true">&#10024;</div>
+          <p class="eyebrow">Your Savorly match</p>
+          <h2 id="result-name"></h2>
+          <p class="result-cuisine" id="result-cuisine"></p>
+          <div class="match-score"><span id="match-score">94%</span><small>taste match</small></div>
+          <p class="result-description" id="result-description"></p>
+          <div class="result-reasons">
+            <strong>Why it fits you</strong>
+            <p id="result-reason"></p>
+            <div class="result-tags" id="result-tags"></div>
+          </div>
+          <p class="allergy-note">Please tell your server about any allergies. Recommendations are for inspiration and are not medical advice.</p>
+          <div class="result-actions">
+            <button class="button" id="another-button" type="button">Show another match</button>
+            <button class="back-button" id="restart-button" type="button">Retake the quiz</button>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <footer class="survey-footer"><p>&copy; <span id="year"></span> Savorly</p><p>Made for curious appetites.</p></footer>
+    <script src="survey.js"></script>
+  </body>
+</html>
