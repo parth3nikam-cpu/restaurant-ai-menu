@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Savorly is a modern neighborhood restaurant with a menu made for every mood."
+    />
+    <title>Savorly — Seasonal food, thoughtfully made</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Savorly home">
+        <span class="brand-mark">S</span>
+        <span>Savorly</span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="#menu">Menu</a>
+        <a href="#about">Our story</a>
+        <a href="#visit">Visit</a>
+      </nav>
+      <a class="button button-small" href="#visit">Book a table</a>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Seasonal · Local · Uncomplicated</p>
+          <h1 id="hero-title">Good food should feel like <em>home.</em></h1>
+          <p class="hero-intro">
+            Honest ingredients, bright flavors, and a menu that follows the
+            season. Come as you are—we saved you a seat.
+          </p>
+          <div class="hero-actions">
+            <a class="button" href="#menu">Explore the menu <span aria-hidden="true">→</span></a>
+            <a class="text-link" href="#assistant">Ask our AI assistant</a>
+          </div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="sun"></div>
+          <div class="plate">
+            <span class="leaf leaf-one"></span>
+            <span class="leaf leaf-two"></span>
+            <span class="tomato tomato-one"></span>
+            <span class="tomato tomato-two"></span>
+            <span class="sauce"></span>
+          </div>
+          <p class="hero-note">Made fresh<br /><strong>every day</strong></p>
+        </div>
+      </section>
+
+      <section class="menu-section" id="menu" aria-labelledby="menu-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">A little something for everyone</p>
+            <h2 id="menu-title">What are you craving?</h2>
+          </div>
+          <p>Our kitchen works with nearby farms and changes the menu as great ingredients arrive.</p>
+        </div>
+
+        <div class="category-tabs" role="group" aria-label="Filter menu by category">
+          <button class="category-tab active" data-category="all">All favorites</button>
+          <button class="category-tab" data-category="small-plates">Small plates</button>
+          <button class="category-tab" data-category="mains">Mains</button>
+          <button class="category-tab" data-category="desserts">Desserts</button>
+        </div>
+
+        <div class="menu-grid" aria-live="polite">
+          <article class="menu-card" data-category="small-plates">
+            <div class="card-visual visual-tomato" aria-hidden="true"><span>01</span></div>
+            <div class="card-content">
+              <div class="card-title-row"><h3>Heirloom tomatoes</h3><strong>$14</strong></div>
+              <p>Whipped feta, basil oil, toasted seeds, sourdough</p>
+              <div class="tags"><span>Vegetarian</span><span>Popular</span></div>
+            </div>
+          </article>
+
+          <article class="menu-card" data-category="mains">
+            <div class="card-visual visual-salmon" aria-hidden="true"><span>02</span></div>
+            <div class="card-content">
+              <div class="card-title-row"><h3>Cedar-roasted salmon</h3><strong>$28</strong></div>
+              <p>Spring peas, charred lemon, fingerling potatoes, dill</p>
+              <div class="tags"><span>Gluten-free</span></div>
+            </div>
+          </article>
+
+          <article class="menu-card" data-category="mains">
+            <div class="card-visual visual-pasta" aria-hidden="true"><span>03</span></div>
+            <div class="card-content">
+              <div class="card-title-row"><h3>Wild mushroom pasta</h3><strong>$23</strong></div>
+              <p>Hand-cut pappardelle, brown butter, sage, parmesan</p>
+              <div class="tags"><span>Vegetarian</span></div>
+            </div>
+          </article>
+
+          <article class="menu-card" data-category="desserts">
+            <div class="card-visual visual-dessert" aria-hidden="true"><span>04</span></div>
+            <div class="card-content">
+              <div class="card-title-row"><h3>Lemon olive oil cake</h3><strong>$11</strong></div>
+              <p>Crème fraîche, macerated berries, garden mint</p>
+              <div class="tags"><span>House favorite</span></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="assistant-section" id="assistant" aria-labelledby="assistant-title">
+        <div class="assistant-icon" aria-hidden="true">✦</div>
+        <div class="assistant-copy">
+          <p class="eyebrow">Your personal taste guide</p>
+          <h2 id="assistant-title">Not sure what to order?</h2>
+          <p>Tell our future AI Menu Assistant what you love, your dietary needs, or your mood—and get a personalized pick in seconds.</p>
+        </div>
+        <button class="button button-light" id="assistant-button" type="button">Try the assistant <span aria-hidden="true">→</span></button>
+        <p class="assistant-status" id="assistant-status" hidden tabindex="-1">The AI Menu Assistant is coming soon. For now, our team would love to help!</p>
+      </section>
+
+      <section class="story-section" id="about">
+        <p class="eyebrow">Our philosophy</p>
+        <blockquote>“Cook with the season. Serve with heart. Make every table feel like the best one in the house.”</blockquote>
+      </section>
+    </main>
+
+    <footer id="visit">
+      <div><a class="brand brand-footer" href="#top"><span class="brand-mark">S</span><span>Savorly</span></a><p>Modern comfort food in the heart of the neighborhood.</p></div>
+      <div><strong>Visit</strong><p>148 Garden Street<br />Tuesday–Sunday, 5–10pm</p></div>
+      <div><strong>Say hello</strong><p>(555) 014-8820<br />hello@savorly.example</p></div>
+      <p class="copyright">© <span id="year"></span> Savorly</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
